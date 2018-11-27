@@ -2,20 +2,19 @@ var myLoc;
 
 var mapimg;
 //45.4555402,9.1670842,15
-var clat = 45.4555878;
-var clon = 9.1734551;
+var lat = 45.4555844;
+var lon = 9.1754196;
 
 var ww = 1024;
 var hh = 512;
 
 var zoom = 17;
 
-var lat;
-var lon;
+
 
 function preload(){
   mapimg = loadImage('https://api.mapbox.com/styles/v1/mapbox/dark-v9/static/' +
-    clon + ',' + clat + ',' + zoom + '/' +
+    lon + ',' + lat + ',' + zoom + '/' +
     ww + 'x' + hh +
     '?access_token=pk.eyJ1IjoiYnJldGVsbGUiLCJhIjoiY2pvaDE3YzVzMGw5MzNxcG5hM2xjMnd4diJ9.1roqKzj6Upe41mwVp6NsPw');
     myLoc = getCurrentPosition();
@@ -42,37 +41,22 @@ function setup() {
   translate(width / 2, height / 2);
   imageMode(CENTER);
   image(mapimg, 0, 0);
-  var cx = mercX(clon);
-  var cy = mercY(clat);
+  var cx = mercX(lon);
+  var cy = mercY(lat);
 
   var x = mercX(lon) - cx;
   var y = mercY(lat) - cy;
   stroke(255, 0, 255);
   fill(255, 0, 255, 200);
   ellipse(x, y, 10, 10);
-  // // for (var i = 1; i < earthquakes.length; i++) {
-  // //   var data = earthquakes[i].split(/,/);
-  // //   //console.log(data);
-  // //   var lat = data[1];
-  // //   var lon = data[2];
-  // //   var mag = data[4];
-  //   // This addition fixes the case where the longitude is non-zero and
-  //   // points can go off the screen.
-  //   if(x < - width/2) {
-  //     x += width;
-  //   } else if(x > width / 2) {
-  //     x -= width;
-  //   }
-  //   mag = pow(10, mag);
-  //   mag = sqrt(mag);
-  //   var magmax = sqrt(pow(10, 10));
-  //   var d = map(mag, 0, magmax, 0, 180);
-  // }
+
+  text('position of a desperet guy, that is still trying to understand why the getCurrentPosition function is not defined',lon -300, lat)
 }
 
 
-
-function draw() {
-  px = myLoc.latitude
-  ellipse()
-}
+//
+// function draw() {
+//   lat = myLoc.latitude
+//   lon = myLoc.longitude
+//   ellipse()
+// }
